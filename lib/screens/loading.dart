@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:weather_app/data/my_location.dart';
 import 'package:weather_app/data/network.dart';
 import 'package:weather_app/screens/weather_screen.dart';
@@ -26,6 +27,7 @@ class _LoadingState extends State<Loading> {
   }
 
   void getLocation() async {
+    LocationPermission permission = await Geolocator.requestPermission();
     MyLocation myLocation = MyLocation();
     await myLocation.getMyCurrentLocation();
     latitude3 = myLocation.latitude2;
